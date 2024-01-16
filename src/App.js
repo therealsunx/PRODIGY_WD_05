@@ -83,7 +83,7 @@ const WeatherCard = ({ weatherData, lat, long, setLat, setLong }) => {
           </div>
         </div>
       </div>
-      
+
       <div className='py-8 flex flex-col text-2xl font-semibold px-6 md:px-12 rounded-2xl shadow-2xl text-center h-fit'>
         {weatherData?.weather?.map((w, i) => (
           <p className='px-8 py-2' key={i}>{w.description.toUpperCase()}</p>
@@ -110,7 +110,7 @@ function App() {
         setInit(false);
       }
 
-      await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&units=metric&appid=21b7fdbeca76af631b7ec97eae322ffb`)
+      await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&units=metric&appid=${process.env.REACT_APP_API_KEY}`)
         .then(res => res.json())
         .then(result => {
           setData(result);
